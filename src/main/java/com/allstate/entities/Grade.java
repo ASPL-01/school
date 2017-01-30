@@ -8,27 +8,30 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "students")
+@Table(name = "grades")
 @Data
-public class Student {
+public class Grade {
     private int id;
     private int version;
-    private String email;
+    private int value;
+    private boolean isPassing;
     private Date created;
     private Date modified;
-    private List<Grade> grades;
-    private List<Klass> klasses;
+    private Student student;
+    private Klass klass;
 
-    public Student() {
+    public Grade() {
     }
 
-    public Student(String email) {
-        this.email = email;
+    public Grade(int value, boolean isPassing, Student student, Klass klass) {
+        this.value = value;
+        this.isPassing = isPassing;
+        this.student = student;
+        this.klass = klass;
     }
 
     @Id
@@ -48,13 +51,21 @@ public class Student {
         this.version = version;
     }
 
-    @Size(min = 3)
     @NotNull
-    public String getEmail() {
-        return email;
+    public int getValue() {
+        return value;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    @Column(name = "is_passing")
+    @NotNull
+    public boolean isPassing() {
+        return isPassing;
+    }
+    public void setPassing(boolean passing) {
+        isPassing = passing;
     }
 
     @CreationTimestamp
@@ -73,24 +84,21 @@ public class Student {
         this.modified = modified;
     }
 
-    @OneToMany(mappedBy = "student")
-    @JsonIgnore
-    public List<Grade> getGrades() {
-        return grades;
+    @ManyToOne
+    @JoinColumn(name="student_id")
+    public Student getStudent() {
+        return student;
     }
-    public void setGrades(List<Grade> grades) {
-        this.grades = grades;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
-    @ManyToMany
-    @JoinTable(name = "grades",
-            joinColumns = @JoinColumn(name = "klass_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"))
-    @JsonIgnore
-    public List<Klass> getKlasses() {
-        return klasses;
+    @ManyToOne
+    @JoinColumn(name="klass_id")
+    public Klass getKlass() {
+        return klass;
     }
-    public void setKlasses(List<Klass> klasses) {
-        this.klasses = klasses;
+    public void setKlass(Klass klass) {
+        this.klass = klass;
     }
 }
