@@ -1,5 +1,6 @@
 package com.allstate.services;
 
+import com.allstate.entities.Grade;
 import com.allstate.entities.Klass;
 import com.allstate.entities.Student;
 import com.allstate.entities.Teacher;
@@ -91,5 +92,11 @@ public class TeacherServiceTest {
     public void shouldFindNoKlassesTaughtByTeacher() throws Exception {
         List<Klass> klasses = this.teacherService.findById(3).getKlasses();
         assertEquals(0, klasses.size());
+    }
+
+    @Test
+    public void shouldFindAllGradesFromTeacher() throws Exception {
+        List<Grade> grades = this.teacherService.findAllGradesByTeacherId(2);
+        assertEquals(6, grades.size());
     }
 }
