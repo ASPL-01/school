@@ -1,6 +1,7 @@
 package com.allstate.services;
 
 import com.allstate.entities.Grade;
+import com.allstate.entities.Student;
 import com.allstate.entities.Teacher;
 import com.allstate.enums.Gender;
 import com.allstate.repositories.ITeacherRepository;
@@ -40,5 +41,9 @@ public class TeacherService {
 
     public List<Grade> findAllGradesByTeacherId(int id){
         return this.teacherRepository.findAllGradesByTeacherId(id);
+    }
+
+    public List<Student> findAllStudentsTaughyByTeacherId(int id){
+        return this.teacherRepository.findAllStudentsTaughyByTeacherId(id);
     }
 }

@@ -99,4 +99,10 @@ public class TeacherServiceTest {
         List<Grade> grades = this.teacherService.findAllGradesByTeacherId(2);
         assertEquals(6, grades.size());
     }
+
+    @Test
+    public void shouldFindAllStudentsTaughtByATeacher() throws Exception {
+        List<Student> grades = this.teacherService.findAllStudentsTaughyByTeacherId(1);
+        assertEquals(3, grades.size());
+    }
 }
