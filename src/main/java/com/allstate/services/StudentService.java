@@ -21,15 +21,15 @@ public class StudentService {
         return this.studentRepository.save(s);
     }
 
+    public Iterable<Student> createAll(List<Student> students){
+        return this.studentRepository.save(students);
+    }
+
     public Student findById(int id){
         return this.studentRepository.findOne(id);
     }
 
     public Student findByEmail(String email){
         return this.studentRepository.findByEmail(email);
-    }
-
-    public Iterable<Student> saveAll(List<Student> students){
-        return this.studentRepository.save(students);
     }
 }

@@ -1,5 +1,6 @@
 package com.allstate;
 
+import com.allstate.services.GradeServiceTest;
 import com.allstate.services.KlassServiceTest;
 import com.allstate.services.StudentServiceTest;
 import com.allstate.services.TeacherServiceTest;
@@ -14,12 +15,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Suite.SuiteClasses({
 		StudentServiceTest.class,
 		KlassServiceTest.class,
-		TeacherServiceTest.class
+		TeacherServiceTest.class,
+		GradeServiceTest.class
 })
 public class SchoolApplicationTests {
-
 	@Test
 	public void contextLoads() {
 	}
-
 }

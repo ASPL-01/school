@@ -11,12 +11,8 @@ CREATE TABLE `grades` (
 
   CONSTRAINT `fk_student_id`
   FOREIGN KEY (`student_id`)
-  REFERENCES `students` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  REFERENCES `students` (`id`),
 
   CONSTRAINT `fk_klass_id`
   FOREIGN KEY (`klass_id`)
-  REFERENCES `klasses` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  REFERENCES `klasses` (`id`));

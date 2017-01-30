@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class LearningService {
     private StudentService studentService;
     private KlassService klassService;
+    private TeacherService teacherService;
 
     @Autowired
     public void setStudentService(StudentService studentService) {
@@ -23,11 +24,8 @@ public class LearningService {
         this.klassService = klassService;
     }
 
-    public Klass enroll(List<String> emails, Klass klass){
-        List<Student> students = emails.stream().map(e -> new Student(e)).collect(Collectors.toList());
-        this.studentService.saveAll(students);
-        klass.setStudents(students);
-        klass = this.klassService.create(klass);
-        return klass;
+    @Autowired
+    public void setTeacherService(TeacherService teacherService) {
+        this.teacherService = teacherService;
     }
 }

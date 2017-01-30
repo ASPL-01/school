@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.Assert.*;
 
@@ -37,10 +38,13 @@ public class StudentServiceTest {
     }
 
     @Test
+    @Transactional
     public void shouldFindStudentById() throws Exception {
         Student student = this.studentService.findById(1);
         assertEquals(1, student.getId());
         assertEquals("aaa@aol.com", student.getEmail());
+        assertEquals(3, student.getGrades().size());
+        assertEquals(3, student.getKlasses().size());
     }
 
     @Test

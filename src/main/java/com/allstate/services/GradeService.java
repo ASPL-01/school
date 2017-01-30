@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 public class GradeService {
     private IGradeRepository gradeRepository;
 
@@ -17,7 +16,7 @@ public class GradeService {
         this.gradeRepository = gradeRepository;
     }
 
-    public Grade save(Grade grade){
+    public Grade create(Grade grade){
         return this.gradeRepository.save(grade);
     }
 
