@@ -1,6 +1,7 @@
 package com.allstate.entities;
 
 import com.allstate.enums.Department;
+import com.allstate.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -16,29 +17,25 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "klasses")
+@Table(name = "teachers")
 @Data
-public class Klass {
+public class Teacher {
     private int id;
     private int version;
     private String name;
-    private Date semester;
-    private int credits;
-    private Department department;
-    private double fee;
+    private int age;
+    private Gender gender;
     private Date created;
     private Date modified;
-    private Teacher teacher;
+    private List<Klass> klasses;
 
-    public Klass() {
+    public Teacher() {
     }
 
-    public Klass(String name, Date semester, int credits, Department department, double fee) {
+    public Teacher(String name, int age, Gender gender) {
         this.name = name;
-        this.semester = semester;
-        this.credits = credits;
-        this.department = department;
-        this.fee = fee;
+        this.age = age;
+        this.gender = gender;
     }
 
     @Id
@@ -67,40 +64,23 @@ public class Klass {
         this.name = name;
     }
 
+    @Min(value = 21)
     @NotNull
-    public Date getSemester() {
-        return semester;
+    public int getAge() {
+        return age;
     }
-    public void setSemester(Date semester) {
-        this.semester = semester;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    @Min(value = 0)
-    @NotNull
-    public int getCredits() {
-        return credits;
-    }
-    public void setCredits(int credits) {
-        this.credits = credits;
-    }
-
-    @Column(columnDefinition = "ENUM('SCIENCE', 'ENGINEERING', 'LITERATURE', 'PHILOSOPHY')")
+    @Column(columnDefinition = "ENUM('MALE', 'FEMALE')")
     @Enumerated(EnumType.STRING)
     @NotNull
-    public Department getDepartment() {
-        return department;
+    public Gender getGender() {
+        return gender;
     }
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    @DecimalMin(value = "0")
-    @NotNull
-    public double getFee() {
-        return fee;
-    }
-    public void setFee(double fee) {
-        this.fee = fee;
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     @CreationTimestamp
@@ -119,12 +99,12 @@ public class Klass {
         this.modified = modified;
     }
 
-    @ManyToOne
-    @JoinColumn(name="teacher_id")
-    public Teacher getTeacher() {
-        return teacher;
+    @OneToMany(mappedBy = "teacher")
+    @JsonIgnore
+    public List<Klass> getKlasses() {
+        return klasses;
     }
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
+    public void setKlasses(List<Klass> klasses) {
+        this.klasses = klasses;
     }
 }
