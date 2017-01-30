@@ -53,4 +53,10 @@ public class StudentServiceTest {
         assertEquals(2, student.getId());
         assertEquals("bbb@aol.com", student.getEmail());
     }
+
+    @Test
+    public void shouldFindTheAverageForStudent() throws Exception {
+        double avg = this.studentService.average(1);
+        assertEquals(51.8, avg, 0.1);
+    }
 }
