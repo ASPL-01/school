@@ -102,7 +102,7 @@ public class TeacherServiceTest {
 
     @Test
     public void shouldFindAllStudentsTaughtByATeacher() throws Exception {
-        List<Student> grades = this.teacherService.findAllStudentsTaughyByTeacherId(1);
-        assertEquals(3, grades.size());
+        List<Student> students = this.teacherService.findAllStudentsTaughyByTeacherId(1);
+        assertEquals(3, students.size());
     }
 }
