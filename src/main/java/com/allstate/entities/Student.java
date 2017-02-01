@@ -82,10 +82,7 @@ public class Student {
         this.grades = grades;
     }
 
-    @ManyToMany
-    @JoinTable(name = "grades",
-            joinColumns = @JoinColumn(name = "klass_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"))
+    @ManyToMany(mappedBy="students")
     @JsonIgnore
     public List<Klass> getKlasses() {
         return klasses;

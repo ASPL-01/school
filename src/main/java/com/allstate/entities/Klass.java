@@ -139,7 +139,10 @@ public class Klass {
         this.grades = grades;
     }
 
-    @ManyToMany(mappedBy="klasses")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "klasses_students",
+            joinColumns = @JoinColumn(name = "klass_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"))
     @JsonIgnore
     public List<Student> getStudents() {
         return students;

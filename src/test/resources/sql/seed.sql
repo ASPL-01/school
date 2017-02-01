@@ -5,6 +5,7 @@ truncate table students;
 truncate table klasses;
 truncate table teachers;
 truncate table grades;
+truncate table klasses_students;
 set FOREIGN_KEY_CHECKS = 1;
 
 insert into students (email) values
@@ -33,3 +34,14 @@ insert into grades (student_id, klass_id, is_passing, value) values
   (1, 3, false, 17),
   (2, 3, true, 76),
   (3, 3, true, 89);
+
+insert into klasses_students (student_id, klass_id) values
+  (1, 1),
+  (2, 1),
+  (3, 1),
+  (1, 2),
+  (2, 2),
+  (3, 2),
+  (1, 3),
+  (2, 3),
+  (3, 3);
