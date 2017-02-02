@@ -20,8 +20,8 @@ public class KlassController {
         this.klassService = klassService;
     }
 
-    @RequestMapping(value = "/klasses/{id}", method = RequestMethod.GET)
-    public List<Student> enroll(@PathVariable int id){
+    @RequestMapping(value = "/klasses/{id}/students", method = RequestMethod.GET)
+    public List<Student> getStudentsByKlassId(@PathVariable int id){
         return this.klassService.findById(id).getStudents();
     }
 }
