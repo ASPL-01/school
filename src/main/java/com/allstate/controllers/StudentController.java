@@ -2,6 +2,7 @@ package com.allstate.controllers;
 
 import com.allstate.dtos.EnrollDto;
 import com.allstate.entities.Klass;
+import com.allstate.entities.Registration;
 import com.allstate.entities.Student;
 import com.allstate.services.KlassService;
 import com.allstate.services.LearningService;
@@ -34,5 +35,15 @@ public class StudentController {
     @RequestMapping(value = "/students/{id}", method = RequestMethod.GET)
     public Student findById(@PathVariable int id){
         return this.studentService.findById(id);
+    }
+
+    @RequestMapping(value = "/students/{id}/klasses", method = RequestMethod.GET)
+    public List<Klass> getKlassesByStudentId(@PathVariable int id){
+        return this.studentService.findById(id).getKlasses();
+    }
+
+    @RequestMapping(value = "/students/{id}/registrations", method = RequestMethod.GET)
+    public List<Registration> getRegistrationsByStudentId(@PathVariable int id){
+        return this.studentService.findById(id).getRegistrations();
     }
 }

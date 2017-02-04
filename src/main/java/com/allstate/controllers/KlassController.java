@@ -2,7 +2,9 @@ package com.allstate.controllers;
 
 import com.allstate.dtos.EnrollDto;
 import com.allstate.entities.Klass;
+import com.allstate.entities.Registration;
 import com.allstate.entities.Student;
+import com.allstate.entities.Teacher;
 import com.allstate.services.KlassService;
 import com.allstate.services.LearningService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +40,15 @@ public class KlassController {
     @RequestMapping(value = "/klasses/{id}/students", method = RequestMethod.GET)
     public List<Student> getStudentsByKlassId(@PathVariable int id){
         return this.klassService.findById(id).getStudents();
+    }
+
+    @RequestMapping(value = "/klasses/{id}/registrations", method = RequestMethod.GET)
+    public List<Registration> getRegistrationsByKlassId(@PathVariable int id){
+        return this.klassService.findById(id).getRegistrations();
+    }
+
+    @RequestMapping(value = "/klasses/{id}/teacher", method = RequestMethod.GET)
+    public Teacher getTeacherByKlassId(@PathVariable int id){
+        return this.klassService.findById(id).getTeacher();
     }
 }
