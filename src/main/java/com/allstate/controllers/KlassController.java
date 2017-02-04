@@ -51,4 +51,9 @@ public class KlassController {
     public Teacher getTeacherByKlassId(@PathVariable int id){
         return this.klassService.findById(id).getTeacher();
     }
+
+    @RequestMapping(value = "/klasses/{klassId}/add/{studentId}", method = RequestMethod.POST)
+    public Registration addStudent(@PathVariable int klassId, @PathVariable int studentId){
+        return this.klassService.addStudent(klassId, studentId);
+    }
 }
