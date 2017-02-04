@@ -3,8 +3,12 @@ package com.allstate.services;
 import com.allstate.entities.Klass;
 import com.allstate.entities.Student;
 import com.allstate.repositories.IKlassRepository;
+import com.allstate.repositories.IStudentRepository;
+import com.sun.org.apache.bcel.internal.generic.ISTORE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Iterator;
 
 @Service
 public class KlassService {
@@ -21,6 +25,10 @@ public class KlassService {
 
     public Klass findById(int id){
         return this.klassRepository.findOne(id);
+    }
+
+    public Iterable<Klass> findAll(){
+        return this.klassRepository.findAll();
     }
 
     public Klass findByName(String name){

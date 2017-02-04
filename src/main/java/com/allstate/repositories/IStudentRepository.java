@@ -10,8 +10,4 @@ import java.util.Optional;
 
 public interface IStudentRepository extends CrudRepository<Student, Integer> {
     public Student findByEmail(String email);
-
-    String sql = "select sum(g.value * k.credits)/sum(k.credits) as average from grades g inner join klasses k on g.klass_id = k.id  where student_id = :id";
-    @Query(value = sql, nativeQuery = true)
-    public Optional<BigDecimal> average(@Param("id") int id);
 }

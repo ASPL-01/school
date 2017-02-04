@@ -27,6 +27,7 @@ public class Teacher {
     private Gender gender;
     private Date created;
     private Date modified;
+    // associations ***
     private List<Klass> klasses;
 
     public Teacher() {
@@ -98,6 +99,10 @@ public class Teacher {
     public void setModified(Date modified) {
         this.modified = modified;
     }
+
+    // --------------------------------------------------------------------- //
+    // --------------------------------------------------------------------- //
+    // --------------------------------------------------------------------- //
 
     @OneToMany(mappedBy = "teacher")
     @JsonIgnore

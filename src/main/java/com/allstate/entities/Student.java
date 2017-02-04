@@ -21,7 +21,8 @@ public class Student {
     private String email;
     private Date created;
     private Date modified;
-    private List<Grade> grades;
+    // associations ***
+    private List<Registration> registrations;
     private List<Klass> klasses;
 
     public Student() {
@@ -73,13 +74,17 @@ public class Student {
         this.modified = modified;
     }
 
+    // --------------------------------------------------------------------- //
+    // --------------------------------------------------------------------- //
+    // --------------------------------------------------------------------- //
+
     @OneToMany(mappedBy = "student")
     @JsonIgnore
-    public List<Grade> getGrades() {
-        return grades;
+    public List<Registration> getRegistrations() {
+        return registrations;
     }
-    public void setGrades(List<Grade> grades) {
-        this.grades = grades;
+    public void setRegistrations(List<Registration> registrations) {
+        this.registrations = registrations;
     }
 
     @ManyToMany(mappedBy="students")

@@ -43,7 +43,6 @@ public class StudentServiceTest {
         Student student = this.studentService.findById(1);
         assertEquals(1, student.getId());
         assertEquals("aaa@aol.com", student.getEmail());
-        assertEquals(3, student.getGrades().size());
         assertEquals(3, student.getKlasses().size());
     }
 
@@ -52,11 +51,5 @@ public class StudentServiceTest {
         Student student = this.studentService.findByEmail("bbb@aol.com");
         assertEquals(2, student.getId());
         assertEquals("bbb@aol.com", student.getEmail());
-    }
-
-    @Test
-    public void shouldFindTheAverageForStudent() throws Exception {
-        double avg = this.studentService.average(1);
-        assertEquals(51.8, avg, 0.1);
     }
 }

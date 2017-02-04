@@ -43,4 +43,14 @@ public class LearningService {
 
         return klass;
     }
+
+    public Klass register(List<String> email, Klass klass){
+        List<Student> students = email.stream().map(e -> new Student(e)).collect(Collectors.toList());
+        klass.setStudents(students);
+
+        this.studentService.createAll(students);
+        this.klassService.create(klass);
+
+        return klass;
+    }
 }

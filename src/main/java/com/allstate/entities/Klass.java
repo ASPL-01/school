@@ -28,8 +28,9 @@ public class Klass {
     private double fee;
     private Date created;
     private Date modified;
+    // associations ***
     private Teacher teacher;
-    private List<Grade> grades;
+    private List<Registration> registrations;
     private List<Student> students;
 
     public Klass() {
@@ -121,6 +122,10 @@ public class Klass {
         this.modified = modified;
     }
 
+    // --------------------------------------------------------------------- //
+    // --------------------------------------------------------------------- //
+    // --------------------------------------------------------------------- //
+
     @ManyToOne
     @JoinColumn(name="teacher_id")
     public Teacher getTeacher() {
@@ -132,15 +137,15 @@ public class Klass {
 
     @OneToMany(mappedBy = "klass")
     @JsonIgnore
-    public List<Grade> getGrades() {
-        return grades;
+    public List<Registration> getRegistrations() {
+        return registrations;
     }
-    public void setGrades(List<Grade> grades) {
-        this.grades = grades;
+    public void setRegistrations(List<Registration> registrations) {
+        this.registrations = registrations;
     }
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "klasses_students",
+    @JoinTable(name = "registrations",
             joinColumns = @JoinColumn(name = "klass_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"))
     @JsonIgnore

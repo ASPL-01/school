@@ -1,5 +1,6 @@
 package com.allstate.services;
 
+import com.allstate.entities.Klass;
 import com.allstate.entities.Student;
 import com.allstate.repositories.IStudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +36,7 @@ public class StudentService {
         return this.studentRepository.findByEmail(email);
     }
 
-    public double average(int id){
-        Optional<BigDecimal> value = this.studentRepository.average(id);
-        return value.isPresent() ? value.get().doubleValue() : 0;
+    public Iterable<Student> findAll(){
+        return this.studentRepository.findAll();
     }
 }

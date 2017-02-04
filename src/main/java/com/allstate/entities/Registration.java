@@ -8,28 +8,26 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "grades")
+@Table(name = "registrations")
 @Data
-public class Grade {
+public class Registration {
     private int id;
     private int version;
-    private int value;
-    private boolean isPassing;
     private Date created;
     private Date modified;
+    // associations ***
     private Student student;
     private Klass klass;
 
-    public Grade() {
+    public Registration() {
     }
 
-    public Grade(int value, boolean isPassing, Student student, Klass klass) {
-        this.value = value;
-        this.isPassing = isPassing;
+    public Registration(Student student, Klass klass) {
         this.student = student;
         this.klass = klass;
     }
@@ -51,23 +49,6 @@ public class Grade {
         this.version = version;
     }
 
-    @NotNull
-    public int getValue() {
-        return value;
-    }
-    public void setValue(int value) {
-        this.value = value;
-    }
-
-    @Column(name = "is_passing")
-    @NotNull
-    public boolean isPassing() {
-        return isPassing;
-    }
-    public void setPassing(boolean passing) {
-        isPassing = passing;
-    }
-
     @CreationTimestamp
     public Date getCreated() {
         return created;
@@ -83,6 +64,10 @@ public class Grade {
     public void setModified(Date modified) {
         this.modified = modified;
     }
+
+    // --------------------------------------------------------------------- //
+    // --------------------------------------------------------------------- //
+    // --------------------------------------------------------------------- //
 
     @ManyToOne
     @JoinColumn(name="student_id")

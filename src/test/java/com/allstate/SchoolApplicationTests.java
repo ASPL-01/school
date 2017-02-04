@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 		StudentServiceTest.class,
 		KlassServiceTest.class,
 		TeacherServiceTest.class,
-		GradeServiceTest.class,
 		LearningServiceTest.class
 })
 public class SchoolApplicationTests {

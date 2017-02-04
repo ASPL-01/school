@@ -13,7 +13,7 @@ INSERT INTO klasses (credits, department, fee, name, semester, teacher_id) VALUE
   (3, 'ENGINEERING', 550.0, 'Electrical Engineering 101', '2018-01-25 00:00:00', 2),
   (2, 'SCIENCE', 430.0, 'Calculus 101', '2019-01-25 00:00:00', 2);
 
-INSERT INTO klasses_students VALUES
+INSERT INTO registrations (klass_id, student_id) VALUES
   (1, 1),
   (1, 2),
   (2, 1),
