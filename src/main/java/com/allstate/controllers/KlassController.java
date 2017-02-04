@@ -56,4 +56,9 @@ public class KlassController {
     public Registration addStudent(@PathVariable int klassId, @PathVariable int studentId){
         return this.klassService.addStudent(klassId, studentId);
     }
+
+    @RequestMapping(value = "/klasses/{klassId}/remove/{studentId}", method = RequestMethod.DELETE)
+    public void removeStudent(@PathVariable int klassId, @PathVariable int studentId){
+        this.klassService.removeStudent(klassId, studentId);
+    }
 }

@@ -54,4 +54,9 @@ public class KlassService {
         Registration registration = new Registration(student, klass);
         return this.registrationRepository.save(registration);
     }
+
+    public void removeStudent(int klassId, int studentId){
+        Registration registration = this.registrationRepository.findByKlassAndStudent(klassId, studentId);
+        this.registrationRepository.delete(registration);
+    }
 }
