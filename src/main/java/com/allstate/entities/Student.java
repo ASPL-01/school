@@ -49,7 +49,7 @@ public class Student {
         this.version = version;
     }
 
-    @Size(min = 3)
+    @Size(min = 7)
     @NotNull
     public String getEmail() {
         return email;
