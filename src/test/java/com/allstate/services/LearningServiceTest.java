@@ -48,7 +48,7 @@ public class LearningServiceTest {
     @Test
     public void shoudEnrollStudents() throws Exception {
         Date date = Date.valueOf("2015-11-03");
-        List<String> emails = Arrays.asList("bob", "sara", "joe", "sam");
+        List<String> emails = Arrays.asList("bobaabb", "saraaabb", "joeaabb", "samaabb");
         Teacher teacher = new Teacher("frank", 33, Gender.MALE);
         Klass klass = new Klass("chemistry", date, 4, Department.SCIENCE, 300);
 
@@ -67,7 +67,7 @@ public class LearningServiceTest {
         this.learningService.setKlassService(fakeKlassService);
 
         Date date = Date.valueOf("2015-11-03");
-        List<String> emails = Arrays.asList("bob", "sara", "joe", "sam");
+        List<String> emails = Arrays.asList("bobaabb", "saraaabb", "joeaabb", "samaabb");
         Teacher teacher = new Teacher("frank", 33, Gender.MALE);
         Klass klass = new Klass("chemistry", date, 4, Department.SCIENCE, 300);
 
